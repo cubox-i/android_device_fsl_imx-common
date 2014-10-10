@@ -1,3 +1,6 @@
+
+COMMON_IMX := device/fsl/imx-common
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
 $(call inherit-product, $(TOPDIR)frameworks/base/data/sounds/AllAudio.mk)
@@ -318,20 +321,20 @@ PRODUCT_PACKAGES += \
     charger
 
 PRODUCT_COPY_FILES +=	\
-	device/fsl/common/input/Dell_Dell_USB_Keyboard.kl:system/usr/keylayout/Dell_Dell_USB_Keyboard.kl \
-	device/fsl/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
-	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/eGalax_Touch_Screen.idc \
-	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/HannStar_P1003_Touchscreen.idc \
-	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/Novatek_NT11003_Touch_Screen.idc \
-	device/fsl/imx6/etc/init.rc:root/init.rc \
-	device/fsl/imx6/etc/apns-conf.xml:system/etc/apns-conf.xml \
-	device/fsl/imx6/etc/init.usb.rc:root/init.freescale.usb.rc \
-	device/fsl/imx6/etc/ueventd.freescale.rc:root/ueventd.freescale.rc \
-	device/fsl/imx6/etc/ppp/init.gprs-pppd:system/etc/ppp/init.gprs-pppd \
-	device/fsl/imx6/etc/ota.conf:system/etc/ota.conf \
-	device/fsl/common/display/display_mode_fb0.conf:system/etc/display_mode_fb0.conf \
-	device/fsl/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \
-	device/fsl/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf
+	$(COMMON_IMX)/common/input/Dell_Dell_USB_Keyboard.kl:system/usr/keylayout/Dell_Dell_USB_Keyboard.kl \
+	$(COMMON_IMX)/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
+	$(COMMON_IMX)/common/input/eGalax_Touch_Screen.idc:system/usr/idc/eGalax_Touch_Screen.idc \
+	$(COMMON_IMX)/common/input/eGalax_Touch_Screen.idc:system/usr/idc/HannStar_P1003_Touchscreen.idc \
+	$(COMMON_IMX)/common/input/eGalax_Touch_Screen.idc:system/usr/idc/Novatek_NT11003_Touch_Screen.idc \
+	$(COMMON_IMX)/imx6/etc/init.rc:root/init.rc \
+	$(COMMON_IMX)/imx6/etc/apns-conf.xml:system/etc/apns-conf.xml \
+	$(COMMON_IMX)/imx6/etc/init.usb.rc:root/init.freescale.usb.rc \
+	$(COMMON_IMX)/imx6/etc/ueventd.freescale.rc:root/ueventd.freescale.rc \
+	$(COMMON_IMX)/imx6/etc/ppp/init.gprs-pppd:system/etc/ppp/init.gprs-pppd \
+	$(COMMON_IMX)/imx6/etc/ota.conf:system/etc/ota.conf \
+	$(COMMON_IMX)/common/display/display_mode_fb0.conf:system/etc/display_mode_fb0.conf \
+	$(COMMON_IMX)/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \
+	$(COMMON_IMX)/common/display/display_mode_fb4.conf:system/etc/display_mode_fb4.conf
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -341,7 +344,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES := \
 	persist.sys.usb.config=mtp
 
 PRODUCT_DEFAULT_DEV_CERTIFICATE := \
-        device/fsl/common/security/testkey
+        $(COMMON_IMX)/common/security/testkey
 
 # include a google recommand heap config file.
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
